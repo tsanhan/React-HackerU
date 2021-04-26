@@ -1,9 +1,13 @@
 import "./App.css";
+import Cards from './components/cards';
 
 function App() {
     return (
         <div className="App">
-            <h1> Hello World!1 </h1>
+            <div className="className">outer element</div>
+            <h1 className="text-danger"> Hello World!1 </h1>
+            <div className="text-success"> <Cards /></div>
+
         </div>
     );
 }
