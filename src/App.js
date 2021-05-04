@@ -1,15 +1,23 @@
+import React from "react";
 import "./App.css";
-import Cards from './components/cards';
+
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 
 function App() {
     return (
-        <div className="App">
-            <div className="className">outer element</div>
-            <h1 className="text-danger"> Hello World!1 </h1>
-            <div className="text-success"> <Cards /></div>
+        <React.Fragment>
+            <header>
+                <Navbar />
+            </header>
+            <main>
 
-        </div>
-    );
+            </main>
+            <footer>
+                <Footer />
+            </footer>
+        </React.Fragment>
+    )
 }
 
 export default App;
