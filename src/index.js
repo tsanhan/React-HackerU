@@ -11,10 +11,16 @@ import "jquery/dist/jquery";
 import "popper.js/dist/popper";
 import "bootstrap/dist/js/bootstrap";
 
+import { BrowserRouter } from "react-router-dom";
+
+
 ReactDOM.render(
-    <React.StrictMode >
-        <App />
-    </React.StrictMode>,
+    <BrowserRouter>
+        <React.StrictMode >
+            <App />
+        </React.StrictMode>
+    </BrowserRouter>
+    ,
     document.getElementById('root')
 );
 
