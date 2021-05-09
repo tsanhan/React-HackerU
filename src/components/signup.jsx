@@ -2,6 +2,9 @@ import React from "react";
 import PageHeader from "./common/pageHeader";
 import Joi from "joi-browser";
 import Form from "./common/form";
+import http from "../services/httpService";
+import { apiUrl } from "../config.json";
+import { toast } from "react-toastify";
 
 class Signup extends Form {
   state = {
@@ -24,10 +27,21 @@ class Signup extends Form {
       .label("Name")
   };
 
-  doSubmit = () => {
-    // Call the server
-    console.log("Submitted");
+  doSubmit = async () => {
+    const { data } = this.state;
+    data.biz = false;
+
+    try {
+      await http.post(`${apiUrl}/users`, data);
+      toast("A new acoount is opened");
+      this.props.history.replace("/home");
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        this.setState({ errors: { email: "Email is taken" } });
+      }
+    }
   };
+
   render() {
     return (
       <div className="container">
