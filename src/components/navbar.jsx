@@ -4,6 +4,8 @@ import { NavLink, Link } from "react-router-dom";
 class Navbar extends Component {
   state = {};
   render() {
+    const { user } = this.props;
+
     return (
       <nav className="navbar navbar-expand-lg navbar-light shadow-sm">
         <div className="container">
@@ -29,22 +31,37 @@ class Navbar extends Component {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-item nav-link" to="/my-cards">
-                  My Cards
-                </NavLink>
+                {user && (
+                  <NavLink className="nav-item nav-link" to="/my-cards">
+                    My Cards
+                  </NavLink>
+                )}
               </li>
             </ul>
             <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <NavLink className="nav-item nav-link" to="/signin">
-                  Signin
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-item nav-link" to="/signup">
-                  Signup
-                </NavLink>
-              </li>
+              {!user && (
+                <React.Fragment>
+                  <li className="nav-item">
+                    <NavLink className="nav-item nav-link" to="/signin">
+                      Signin
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink className="nav-item nav-link" to="/signup">
+                      Signup
+                    </NavLink>
+                  </li>
+                </React.Fragment>
+              )}
+              {user && (
+                <React.Fragment>
+                  <li className="nav-item">
+                    <NavLink className="nav-item nav-link" to="/logout">
+                      Logout
+                    </NavLink>
+                  </li>
+                </React.Fragment>
+              )}
             </ul>
           </div>
         </div>
@@ -53,4 +70,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;      
+export default Navbar;
